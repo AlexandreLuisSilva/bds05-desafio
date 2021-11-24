@@ -1,12 +1,15 @@
 package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,9 @@ public class Role implements Serializable{
 	private Long id;
 	private String authority;
 	
+	@OneToMany(mappedBy = "user")
+	private List<User> users = new ArrayList<>();
+
 	public Role() {
 	}
 
@@ -42,6 +48,10 @@ public class Role implements Serializable{
 
 	public void setAuthority(String authority) {
 		this.authority = authority;
+	}
+
+	public List<User> getUsers() {
+		return users;
 	}
 
 	@Override
