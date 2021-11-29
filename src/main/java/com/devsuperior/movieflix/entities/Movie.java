@@ -31,10 +31,10 @@ public class Movie implements Serializable {
 	private String synopsis;
 	
 	@ManyToOne
-	@JoinColumn(name = "genry_id")
+	@JoinColumn(name = "genre_id")
 	private Genre genre;
 
-	@OneToMany(mappedBy = "movie")
+	@OneToMany(mappedBy = "movies")
 	private List<Review> reviews = new ArrayList<>();
 
 	public Movie() {

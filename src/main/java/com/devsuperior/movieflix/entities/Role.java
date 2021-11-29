@@ -22,7 +22,7 @@ public class Role implements Serializable{
 	private Long id;
 	private String authority;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "roles")
 	private List<User> users = new ArrayList<>();
 
 	public Role() {
@@ -48,10 +48,6 @@ public class Role implements Serializable{
 
 	public void setAuthority(String authority) {
 		this.authority = authority;
-	}
-
-	public List<User> getUsers() {
-		return users;
 	}
 
 	@Override

@@ -46,10 +46,6 @@ public class User implements UserDetails, Serializable {
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
 	private Set<Role> roles = new HashSet<>();
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "user")
-	private List<Review> reviews = new ArrayList<>();
-
 	public User() {
 	}
 
@@ -95,10 +91,6 @@ public class User implements UserDetails, Serializable {
 	
 	public Set<Role> getRoles() {
 		return roles;
-	}
-
-	public List<Review> getReviews() {
-		return reviews;
 	}
 
 	@Override
@@ -155,5 +147,14 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+	
+	public boolean hasRole(String roleName) {
+		for (Role role : roles) {
+			if (role.getAuthority().equals(roleName)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

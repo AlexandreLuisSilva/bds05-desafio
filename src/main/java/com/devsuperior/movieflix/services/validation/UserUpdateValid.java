@@ -1,4 +1,4 @@
-package com.lucasmonteiro.movieflix.services.validation;
+package com.devsuperior.movieflix.services.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
